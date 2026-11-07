@@ -64,13 +64,13 @@ class InfinityLoop extends HTMLElement {
     this.style_();
   }
 tick(now) {
-  const dt = Math.min((now - this.last) / 1000, 0.01); this.last = now;
+  const dt = Math.min((now - this.last) / 1000, 1); this.last = now;
   if (!this.hasAttribute("paused")) {
-    const mode = this.getAttribute("mode") || "snake", sp = this.num("speed", 0.5);
+    const mode = this.getAttribute("mode") || "snake", sp = this.num("speed", 0.01);
     const lapLen = mode === "draw" ? 2 : 1;
     const lapFrac = (((this.p % lapLen) + lapLen) % lapLen) / lapLen; // 0 → 1 within the current lap
     const MAX_MULT = 5;
-    const mult = Math.pow(MAX_MULT, lapFrac); // 1x at lap start, 5x at lap end, exponential between
+    const mult = Math.pow(MAX_MULT, 1 - lapFrac); // 1x at lap start, 5x at lap end, exponential between
     this.p = (this.p + dt * sp * mult * (mode === "draw" ? 2 : 1)) % lapLen;
   }
   this.render();
@@ -102,3 +102,5 @@ tick(now) {
 if (typeof window !== "undefined" && !customElements.get("infinity-loop")) {
   customElements.define("infinity-loop", InfinityLoop);
 }
+
+export {};
