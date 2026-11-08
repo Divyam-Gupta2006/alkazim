@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "falling-leaves": "^0.1.0",
     "framer-motion": "^11.18.2",
     "lucide-react": "^0.468.0",
     "next": "^14.2.21",

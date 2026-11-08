@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import GlassSurface from '@/components/GlassSurface'; // adjust path if needed
@@ -86,22 +87,13 @@ export function Navbar() {
                 href="/"
                 className="group flex items-center gap-2.5 text-ink focus:outline-none"
               >
-                {/* Compact Infinity Loop SVG */}
-                <svg
-                  width="32"
-                  height="18"
-                  viewBox="0 0 64 32"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="transition-transform duration-300 group-hover:scale-105"
-                >
-                  <path
-                    d="M18 6C10.268 6 4 11.373 4 18C4 24.627 10.268 30 18 30C25.5 30 29.5 23.5 32 18C34.5 12.5 38.5 6 46 6C53.732 6 60 11.373 60 18C60 24.627 53.732 30 46 30C38.5 30 34.5 23.5 32 18C29.5 12.5 25.5 6 18 6Z"
-                    stroke="currentColor"
-                    strokeWidth="4.5"
-                    strokeLinecap="round"
-                  />
-                </svg>
+                <Image
+                  src="/images/logo.webp"
+                  alt=""
+                  width={552}
+                  height={452}
+                  className="h-7 w-auto transition-transform duration-300 group-hover:scale-105"
+                />
 
                 <span className="font-serif text-xl tracking-[-0.03em] text-[#111110]">
                   Endloops

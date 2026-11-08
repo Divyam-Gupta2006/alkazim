@@ -82,18 +82,18 @@ export function Hero() {
       >
         {/* Left: Main hero */}
         <div className="flex flex-col">
-          <div className="flex items-center gap-6 md:gap-10 min-w-0">
-            <h1 className="flex flex-col font-serif text-[clamp(4.2rem,9vw,8.5rem)] leading-[0.99] tracking-[-.055em] text-ink">
+          <div className="flex items-center gap-4 sm:gap-6 md:gap-10 min-w-0">
+            <h1 className="flex flex-col font-serif text-[clamp(2.8rem,8vw,8.5rem)] leading-[0.99] tracking-[-.055em] text-ink">
               <span>Built</span>
               <span>For</span>
             </h1>
 
-            <div className="flex items-center font-serif text-[clamp(1.8rem,4vw,3.6rem)] leading-[0.9] tracking-[-.04em] text-teal italic">
+            <div className="flex items-center font-serif text-[clamp(1.5rem,3.8vw,3.6rem)] leading-[0.9] tracking-[-.04em] text-teal italic min-w-0">
               <PersonaReel active={active} />
             </div>
           </div>
 
-          <div className="mt-8 min-h-[90px] max-w-[750px]">
+          <div className="mt-6 sm:mt-8 min-h-[90px] max-w-[750px]">
             <AnimatePresence mode="wait">
               <motion.p
                 key={currentPersona}
@@ -101,24 +101,24 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="text-lg leading-8 text-slate md:text-2xl md:leading-[1.6]"
+                className="text-base sm:text-lg leading-7 sm:leading-8 text-slate md:text-xl md:leading-[1.6] text-[#251605] z-100"
               >
                 {personas[currentPersona].line}
               </motion.p>
             </AnimatePresence>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center gap-6">
+          <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-6">
             <Link
               href="/contact"
-              className="button-teal !px-8 !py-4 !text-base md:!px-10 md:!py-5 md:!text-lg"
+              className="button-teal !px-6 !py-3.5 !text-sm sm:!px-8 sm:!py-4 sm:!text-base md:!px-10 md:!py-5 md:!text-lg"
             >
-              Request a demo <ArrowUpRight size={22} />
+              Request a demo <ArrowUpRight size={20} className="sm:w-[22px] sm:h-[22px]" />
             </Link>
 
             <Link
               href="/contact"
-              className="button-outline !px-8 !py-4 !text-base md:!px-10 md:!py-5 md:!text-lg"
+              className="button-outline !px-6 !py-3.5 !text-sm sm:!px-8 sm:!py-4 sm:!text-base md:!px-10 md:!py-5 md:!text-lg"
             >
               Contact us
             </Link>
@@ -126,22 +126,13 @@ export function Hero() {
         </div>
 
         {/* Right: Hero logo & brand name */}
-        <div className="relative flex flex-col items-center justify-center md:-translate-x-8 lg:-translate-x-12">
-          {/*
-            Sizing lives entirely on AnimatedInfinityLogo's own responsive
-            classes now. The previous version also forced conflicting widths
-            on this wrapping div (md:380px / lg:440px) while the logo itself
-            independently forced 280px / 380px / 440px at different
-            breakpoints — two competing !important widths on two different
-            elements, which could leave mismatched empty space around the
-            mark. Keeping width control in one place avoids that.
-          */}
-          <div className="relative hidden md:flex items-center justify-center">
-            <AnimatedInfinityLogo className="!w-[280px] lg:!w-[380px] xl:!w-[440px]" />
+        <div className="relative flex flex-col items-center justify-center md:-translate-x-5 lg:-translate-x-17">
+          <div className="relative flex items-center justify-center">
+            <AnimatedInfinityLogo className="w-[180px] sm:w-[240px] md:!w-[280px] lg:!w-[380px] xl:!w-[440px]" />
           </div>
 
-          <div className="mt-4 text-center">
-            <h2 className="font-serif text-[clamp(3rem,6vw,6rem)] leading-[0.85] tracking-[-.055em] text-[#251605]">
+          <div className="mt-2 sm:mt-4 text-center">
+            <h2 className="font-serif text-[clamp(2.4rem,5.5vw,6rem)] leading-[0.85] tracking-[-.055em] text-[#251605]">
               Endloops
             </h2>
           </div>
@@ -173,7 +164,7 @@ function PersonaReel({ active }: { active: number }) {
 
   return (
     <span
-      className="relative inline-block h-[1.55em] min-w-[7.2em] align-baseline"
+      className="relative h-[1.6em] min-w-[5.2em] sm:min-w-[7.2em] align-middle overflow-hidden text-left font-serif text-[clamp(1.5rem,3.8vw,3.6rem)] leading-[1em] tracking-[-0.04em] text-teal italic"
       style={{
         WebkitMaskImage:
           "linear-gradient(to bottom, transparent, #000 28%, #000 72%, transparent)",
@@ -201,7 +192,7 @@ function PersonaReel({ active }: { active: number }) {
         {extendedPersonas.map((p, i) => (
           <span
             key={`${p.name}-${i}`}
-            className="font-display h-[1em] whitespace-nowrap leading-[1em] text-teal"
+            className="font-display h-[1em] whitespace-nowrap leading-[1em] text-[#251605] min-w-[1em]"
           >
             {p.name}
           </span>
@@ -342,11 +333,8 @@ export function PersonasSection() {
             </div>
           </div>
 
-          {/* CENTER: VERTICAL ROLLER (Desktop) */}
-          <div className="relative hidden h-[380px] w-full overflow-hidden md:block text-center">
+          {/* CENTER: VERTICAL ROLLER (Desktop) */}<div className="relative hidden h-[380px] w-full overflow-hidden md:block text-center bg-[url('/images/boardroom.jpg')] bg-cover bg-center rounded-[50px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-black/[0.06]">
             {/* Soft top & bottom gradient masks */}
-            <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-28 bg-gradient-to-b from-[#fbf9f4] via-[#fbf9f4]/80 to-transparent" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-28 bg-gradient-to-t from-[#fbf9f4] via-[#fbf9f4]/80 to-transparent" />
 
             {/* Exact mathematical center-anchored track */}
             <motion.div
@@ -370,7 +358,7 @@ export function PersonasSection() {
                     type="button"
                     onClick={() => scrollToPersona(i)}
                     style={{ height: `${ITEM_HEIGHT}px` }}
-                    className={`group flex items-center justify-center whitespace-nowrap px-4 font-serif tracking-[-0.035em] transition-all duration-300 focus:outline-none ${
+                    className={`group flex items-center justify-center whitespace-nowrap px-4 font-serif tracking-[-0.035em] transition-all duration-300 focus:outline-none text-[#ffffff] ${
                       isSelected
                         ? "scale-100 text-3xl font-normal text-[#111110] opacity-100 lg:text-[44px]"
                         : distance === 1
@@ -457,8 +445,8 @@ export function ScaleSection() {
   const [side, setSide] = useState<ScaleSide | null>(null);
 
   return (
-    <div className="relative h-[100vh]">
-      <section className="flex h-full w-full items-center bg-paper px-6 py-12 md:px-10 md:py-16">
+    <div className="relative min-h-screen py-12 lg:h-[100vh] lg:py-0">
+      <section className="flex min-h-screen lg:h-full w-full items-center bg-paper px-6 py-8 md:px-10 lg:py-16">
         <div className="mx-auto w-full max-w-[1800px]">
           <SectionHeading
             eyebrow="Two ways to work"
@@ -466,9 +454,35 @@ export function ScaleSection() {
             text="Explore the capabilities behind each approach."
           />
 
+          {/* Mobile view selector */}
+          <div className="mt-8 flex flex-wrap justify-center gap-2.5 lg:hidden">
+            <button
+              type="button"
+              onClick={() => setSide("solutions")}
+              className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
+                side === "solutions"
+                  ? "bg-teal text-white shadow-sm"
+                  : "border border-line bg-white text-slate hover:text-ink"
+              }`}
+            >
+              01 End-to-end solutions
+            </button>
+            <button
+              type="button"
+              onClick={() => setSide("tools")}
+              className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
+                side === "tools"
+                  ? "bg-teal text-white shadow-sm"
+                  : "border border-line bg-white text-slate hover:text-ink"
+              }`}
+            >
+              02 Standalone tools
+            </button>
+          </div>
+
           {/* 40 / 20 / 40 layout */}
           <div
-            className="mt-12 grid items-center gap-8 lg:mt-16 lg:grid-cols-[2fr_1fr_2fr] lg:gap-6 xl:gap-12"
+            className="mt-12 grid items-center gap-10 lg:mt-16 lg:grid-cols-[2fr_1fr_2fr] lg:gap-6 xl:gap-12"
             onMouseLeave={() => setSide(null)}
           >
             {/* LEFT — END-TO-END SOLUTIONS */}
@@ -481,6 +495,7 @@ export function ScaleSection() {
                 sublabel="01"
                 items={solutions}
                 open={side === "solutions"}
+                activeSide={side}
                 align="left"
               />
             </div>
@@ -504,6 +519,7 @@ export function ScaleSection() {
                 sublabel="02"
                 items={tools}
                 open={side === "tools"}
+                activeSide={side}
                 align="right"
               />
             </div>
@@ -519,12 +535,14 @@ function FeatureList({
   sublabel,
   items,
   open,
+  activeSide,
   align,
 }: {
   heading: string;
   sublabel: string;
   items: { n: string; title: string; description: string }[];
   open: boolean;
+  activeSide: ScaleSide | null;
   align: "left" | "right";
 }) {
   const [hover, setHover] = useState(-1);
@@ -533,7 +551,7 @@ function FeatureList({
     <motion.div
       initial={false}
       animate={{
-        opacity: open ? 1 : 0.35,
+        opacity: activeSide === null ? 0.9 : open ? 1 : 0.35,
         x: open ? 0 : align === "left" ? -8 : 8,
       }}
       transition={{
@@ -541,13 +559,13 @@ function FeatureList({
         ease: [0.22, 1, 0.36, 1],
       }}
       className={`w-full min-w-0 ${
-        align === "right" ? "text-right" : "text-left"
+        align === "right" ? "lg:text-right text-left" : "text-left"
       }`}
     >
       {/* Minimal heading */}
       <div
         className={`mb-7 flex items-center gap-3 ${
-          align === "right" ? "justify-end" : ""
+          align === "right" ? "lg:justify-end justify-start" : ""
         }`}
       >
         <span className="text-[10px] font-medium tracking-[0.18em] text-[#79AE9B]">
@@ -573,7 +591,7 @@ function FeatureList({
             >
               <div
                 className={`flex items-center gap-3 ${
-                  align === "right" ? "justify-end" : ""
+                  align === "right" ? "lg:justify-end justify-start" : ""
                 }`}
               >
                 {align === "left" && (
@@ -929,8 +947,8 @@ function CompareMatchView() {
         </span>
       </div>
 
-      <div className="overflow-hidden rounded-lg border border-line">
-        <table className="w-full text-left text-xs">
+      <div className="overflow-x-auto rounded-lg border border-line">
+        <table className="w-full min-w-[500px] text-left text-xs">
           <thead className="border-b border-line bg-paper text-[11px] uppercase text-slate">
             <tr>
               <th className="px-3 py-2.5">Source Doc</th>
@@ -1263,16 +1281,25 @@ function HandleBulkView() {
 
   useEffect(() => {
     if (!running) return;
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          setRunning(false);
-          return 100;
-        }
-        return prev + 5;
-      });
-    }, 80);
-    return () => clearInterval(timer);
+    let animId: number;
+    let lastTime = performance.now();
+
+    const tick = (time: number) => {
+      if (time - lastTime >= 65) {
+        lastTime = time;
+        setProgress((prev) => {
+          if (prev >= 100) {
+            setRunning(false);
+            return 100;
+          }
+          return Math.min(100, prev + 5);
+        });
+      }
+      animId = requestAnimationFrame(tick);
+    };
+
+    animId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(animId);
   }, [running]);
 
   const startBatch = () => {
@@ -1316,7 +1343,7 @@ function HandleBulkView() {
         />
       </div>
 
-      <div className="mt-4 grid grid-cols-3 gap-3">
+      <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
         <div className="rounded-lg border border-line bg-paper p-3">
           <span className="text-[11px] text-slate">Documents Read</span>
           <p className="mt-1 font-mono text-xl font-semibold text-ink">

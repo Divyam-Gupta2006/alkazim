@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   motion,
@@ -110,14 +111,23 @@ export function Header() {
             className="transition-all duration-500"
           >
             <div className="flex h-full w-full items-center justify-between px-4 md:px-6">
-              {/* Brand / Logo Slot (kept empty on home if scroll-tracked hero logo lands here) */}
+              {/* Brand / Logo Slot */}
               <Link
                 href="/"
-                className="group flex h-9 w-[156px] items-center"
+                className="group flex h-9 items-center gap-2.5"
                 aria-label="Endloops home"
               >
-                {/* Add the official static logo at /public/images/endloops-logo.png when ready. */}
-                <span className="block h-9 w-[156px]" aria-hidden="true" />
+                <Image
+                  src="/images/logo.webp"
+                  alt="Endloops logo"
+                  width={32}
+                  height={26}
+                  priority
+                  className="h-7 w-auto transition-transform duration-300 group-hover:scale-105"
+                />
+                <span className="font-serif text-xl font-semibold tracking-[-0.03em] text-ink">
+                  Endloops
+                </span>
               </Link>
 
               {/* Center Links */}
@@ -244,9 +254,18 @@ export function Footer() {
           <Link
             href="/"
             aria-label="Endloops home"
-            className="block h-10 w-[170px]"
+            className="inline-flex items-center gap-2.5"
           >
-            <span className="block h-10 w-[170px]" aria-hidden="true" />
+            <Image
+              src="/images/logo.webp"
+              alt="Endloops logo"
+              width={32}
+              height={26}
+              className="h-7 w-auto brightness-0 invert"
+            />
+            <span className="font-serif text-2xl font-semibold tracking-[-0.03em] text-white">
+              Endloops
+            </span>
           </Link>
           <p className="mt-4 max-w-sm text-sm leading-7 text-paper/60">
             Financial automation built for professionals. The software prepares

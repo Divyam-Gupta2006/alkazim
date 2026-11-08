@@ -56,17 +56,24 @@ export function BalanceScale({
         transition={beamSpring}
       >
         {/* Main beam */}
-        <img
-          src="/images/beam.png"
-          alt=""
-          draggable={false}
-          className="absolute"
-          style={{
-            left: "16.78%",
-            top: "19.9%",
-            width: "66.1%",
-          }}
-        />
+        <picture>
+          <source srcSet="/images/beam.webp" type="image/webp" />
+          <img
+            src="/images/beam.png"
+            alt=""
+            width={382}
+            height={51}
+            loading="lazy"
+            decoding="async"
+            draggable={false}
+            className="absolute"
+            style={{
+              left: "16.78%",
+              top: "19.9%",
+              width: "66.1%",
+            }}
+          />
+        </picture>
 
         {/* Left pan: End-to-end solutions */}
         <Pan
@@ -100,17 +107,24 @@ export function BalanceScale({
       </motion.div>
 
       {/* Stationary base */}
-      <img
-        src="/images/base.png"
-        alt="Endloops balance scale"
-        draggable={false}
-        className="absolute"
-        style={{
-          left: "38.9%",
-          top: "4.4%",
-          width: "21.6%",
-        }}
-      />
+      <picture>
+        <source srcSet="/images/base.webp" type="image/webp" />
+        <img
+          src="/images/base.png"
+          alt="Endloops balance scale"
+          width={125}
+          height={398}
+          loading="lazy"
+          decoding="async"
+          draggable={false}
+          className="absolute"
+          style={{
+            left: "38.9%",
+            top: "4.4%",
+            width: "21.6%",
+          }}
+        />
+      </picture>
     </div>
   );
 }
@@ -151,12 +165,22 @@ function Pan({
       aria-pressed={active}
       aria-label={`Show ${label}`}
     >
-      <img
-        src={`/images/pan-${side === "solutions" ? "left" : "right"}.png`}
-        alt=""
-        draggable={false}
-        className="w-full"
-      />
+      <picture>
+        <source
+          srcSet={`/images/pan-${side === "solutions" ? "left" : "right"}.webp`}
+          type="image/webp"
+        />
+        <img
+          src={`/images/pan-${side === "solutions" ? "left" : "right"}.png`}
+          alt=""
+          width={136}
+          height={206}
+          loading="lazy"
+          decoding="async"
+          draggable={false}
+          className="w-full"
+        />
+      </picture>
 
       <span
         className={`absolute left-1/2 top-full mt-3 w-max -translate-x-1/2 text-xs font-semibold tracking-[-.01em] transition-colors ${

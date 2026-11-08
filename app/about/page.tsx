@@ -99,8 +99,8 @@ function reveal(delay = 0) {
 function OriginTimeline() {
   return (
     <motion.div {...reveal(0.15)} className="relative mt-14">
-      <div className="relative flex items-center justify-between gap-6">
-        <div className="relative z-10 flex-1 rounded-[26px] border border-line bg-white p-6 md:p-8">
+      <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 sm:gap-6">
+        <div className="relative z-10 w-full sm:flex-1 rounded-[26px] border border-line bg-white p-6 md:p-8">
           <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate/50">2018</p>
           <p className="mt-2 font-serif text-xl tracking-[-0.03em] text-ink md:text-2xl">
             Internal tech team at Alkazim, Dubai
@@ -117,7 +117,7 @@ function OriginTimeline() {
           />
         </div>
 
-        <div className="relative z-10 flex-1 rounded-[26px] border border-teal/30 bg-mint p-6 md:p-8">
+        <div className="relative z-10 w-full sm:flex-1 rounded-[26px] border border-teal/30 bg-mint p-6 md:p-8">
           <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-teal/70">Today</p>
           <p className="mt-2 font-serif text-xl tracking-[-0.03em] text-ink md:text-2xl">
             Endloops — independent financial automation engine
