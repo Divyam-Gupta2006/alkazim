@@ -10,9 +10,9 @@ export function AnimatedInfinityLogo({ className = "" }: { className?: string })
     <infinity-loop
       className={className}
       mode="snake"
-      scale-x="179"
+      scale-x="169"
       scale-y="66"
-      speed="0.2"
+      speed="0.150"
       length="0.9"
       width="30"
       size="590"

@@ -29,10 +29,6 @@ import { SectionHeading, ContactForm } from "./ui";
 import { BalanceScale, type ScaleSide } from "./balancescale";
 import { AnimatedInfinityLogo } from "./animated-infinity-logo";
 
-// Exactly one icon per sandbox view below (active indexes 0–4 are hardcoded
-// against ReadDocumentsView / CompareMatchView / CheckRulesView /
-// PrepareDraftsView / HandleBulkView), so this stays a fixed 5-entry array
-// rather than a longer list that silently drifts out of sync with the views.
 const icons = [ScanText, GitCompareArrows, ShieldCheck, FileCheck2, Layers3];
 
 /* ============================================================
@@ -60,14 +56,7 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
 
-  // Scale and Y only. An earlier version also animated opacity on this same
-  // full-viewport wrapper, which sits directly beneath the nav's glass
-  // backdrop — fading a huge layer in and out every frame forces the
-  // backdrop filter to keep regenerating its source texture, which is what
-  // produced the stale/glitched nav rendering during scroll. Scale and Y are
-  // pure transforms (no repaint) and don't have that problem. The hero also
-  // gets visually covered by PersonasSection's sticky reveal panel as you
-  // scroll past it, so a separate opacity fade here was redundant anyway.
+
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "6%"]);
 
@@ -144,10 +133,6 @@ export function Hero() {
 
 function PersonaReel({ active }: { active: number }) {
   const count = personas.length;
-  // Three stacked copies. Steady state lives in the middle copy; once
-  // forward motion carries us into the trailing copy, we silently snap
-  // (duration: 0) back to the equivalent spot in the middle copy — the two
-  // spots render identical text, so the snap is invisible.
   const extendedPersonas = [...personas, ...personas, ...personas];
 
   const [tick, setTick] = useState<number>(count);
@@ -164,13 +149,13 @@ function PersonaReel({ active }: { active: number }) {
 
   return (
     <span
-      className="relative h-[1.6em] min-w-[5.2em] sm:min-w-[7.2em] align-middle overflow-hidden text-left font-serif text-[clamp(1.5rem,3.8vw,3.6rem)] leading-[1em] tracking-[-0.04em] text-teal italic"
-      style={{
-        WebkitMaskImage:
-          "linear-gradient(to bottom, transparent, #000 28%, #000 72%, transparent)",
-        maskImage:
-          "linear-gradient(to bottom, transparent, #000 28%, #000 72%, transparent)",
-      }}
+      className="relative h-[1.6em] min-w-[5.7em] sm:min-w-[8.2em] align-middle overflow-hidden text-left font-serif text-[clamp(1.5rem,3.8vw,3.6rem)] leading-[1em] tracking-[-0.04em] text-teal italic"
+      // style={{
+      //   WebkitMaskImage:
+      //     "linear-gradient(to bottom, transparent, #000 28%, #000 72%, transparent)",
+      //   maskImage:
+      //     "linear-gradient(to bottom, transparent, #000 28%, #000 72%, transparent)",
+      // }}
     >
       <motion.span
         className="absolute left-0 top-0 flex flex-col"
@@ -210,10 +195,6 @@ function PersonaReel({ active }: { active: number }) {
    point and partner-quote on either side.
    ============================================================ */
 
-// Bumped from 76 to 88px: at the selected size (up to text-[44px] on
-// desktop) some persona names ("Property Managers") sat close to the row
-// height ceiling. 88px gives consistent clearance across every name in the
-// list without needing per-name tuning.
 const ITEM_HEIGHT = 88;
 
 export function PersonasSection() {
@@ -334,9 +315,7 @@ export function PersonasSection() {
           </div>
 
           {/* CENTER: VERTICAL ROLLER (Desktop) */}<div className="relative hidden h-[380px] w-full overflow-hidden md:block text-center bg-[url('/images/boardroom.jpg')] bg-cover bg-center rounded-[50px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] ring-1 ring-black/[0.06]">
-            {/* Soft top & bottom gradient masks */}
 
-            {/* Exact mathematical center-anchored track */}
             <motion.div
               animate={{ y: -active * ITEM_HEIGHT }}
               transition={{
